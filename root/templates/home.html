@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Home Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .nav-link {
+            @apply px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-accent hover:bg-primary;
+        }
+    </style>
+</head>
+<body class="bg-primary">
+<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a class="flex items-center" href="#" target="_blank">
+            <span class="self-center text-xl font-semibold whitespace-nowrap text-secondary">Logo</span>
+        </a>
+        <div class="flex md:order-2">
+            <button class="text-white bg-secondary hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
+                    type="button">Get Started
+            </button>
+            <button aria-controls="navbar-sticky" aria-expanded="false"
+                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    data-collapse-toggle="navbar-sticky" type="button">
+                <span class="sr-only">Open main menu</span>
+                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd"
+                          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                          fill-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                <li>
+                    <a aria-current="page" class="nav-link" href="/">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/product">Products</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mx-auto my-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col justify-center">
+            <h1 class="text-4xl font-bold text-secondary mb-4">Welcome to Our Website</h1>
+            <p class="text-gray-700 mb-6">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna
+                vel luctus tincidunt, nisi nunc aliquam mauris, quis aliquam turpis nunc
+                sed purus.
+            </p>
+            <button class="bg-secondary hover:bg-accent text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                Get Started
+            </button>
+        </div>
+        <div>
+            <img alt="no picture"
+                 class="w-full h-96 object-cover rounded-lg" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0L3BmLWljb240LWppcjIyMTItcG9yLWwtam9iNzg4LnBuZw.png"/>
+        </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold text-secondary mb-4">Featured Products</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for datas in home_products %}
+            <div class="bg-gray-100 rounded-lg overflow-hidden">
+                <img alt="A visually appealing and high-quality image of one of our featured products, showcasing its unique design, premium materials, and attention to detail, making it a standout offering."
+                     class="w-full h-48 object-cover" src="{{datas.image.url}}"/>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-secondary mb-2">{{datas.name}}</h3>
+                    <p class="text-gray-700 mb-4">{{datas.description}}</p>
+                    <p class="text-xl font-bold text-accent">${{datas.price}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
